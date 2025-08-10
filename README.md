@@ -62,4 +62,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ---
 
-Made with ❤️ using
+Made with ❤️ using Flutter.
