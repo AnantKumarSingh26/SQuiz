@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           child: Column(
             children: [
               const Spacer(flex: 2),
-              Image.asset('assets/image.png', fit: BoxFit.cover),
+              Image.asset('assets/image2.png', fit: BoxFit.cover),
               const SizedBox(height: 20),
               const Text(
                 'Welcome to Squiz, \n Challenge your mind, expand your knowledge',
