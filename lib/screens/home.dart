@@ -10,7 +10,24 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Home Screen',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color.fromARGB(255, 36, 32, 65),),textAlign: TextAlign.center,),
+        title: Text(
+          'Welcome to a New Journey',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            foreground:
+                Paint()
+                  ..shader = LinearGradient(
+                    colors: [
+                      const Color.fromARGB(255, 83, 90, 227),
+                      const Color.fromARGB(255, 220, 19, 255),
+                    ], // Your gradient colors
+                  ).createShader(Rect.fromLTWH(0, 0, 200, 70)), //
+          ),
+          textAlign: TextAlign.center,
+        ),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -20,12 +37,28 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: const Text(
-            'Welcome to the Home Screen!',
-            style: TextStyle(fontSize: 24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Welcome to the John',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Add your button action here
+                },
+                child: Text('Click Me'),
+              ),
+            ],
           ),
         ),
-      ),      
-      );
+      ),
+    );
   }
 }
