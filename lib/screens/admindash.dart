@@ -15,7 +15,7 @@ class admindash extends StatelessWidget {
             foreground: Paint()
               ..shader = LinearGradient(
                 colors: [
-                  const Color.fromARGB(255, 245, 245, 245),
+                  const Color.fromARGB(255, 249, 237, 1),
                   const Color.fromARGB(255, 255, 255, 255),
                 ],
               ).createShader(Rect.fromLTWH(0, 0, 200, 50)),
@@ -23,6 +23,7 @@ class admindash extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -32,12 +33,11 @@ class admindash extends StatelessWidget {
           ),
         ),
         child: Center(
-          child: Text(
-            'Welcome to the Admin Dashboard',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          child: Column(
+            
+          ),
           ),
         ),
-      ),
     );
   }
 }
