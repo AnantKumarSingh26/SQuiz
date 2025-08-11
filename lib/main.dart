@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'screens/home.dart';
+import 'screens/admindash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
                       // Navigate to the home screen
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) =>  HomeScreen()),
+                        MaterialPageRoute(builder: (context) =>  admindash()),
                       );
                     },
                     style: ElevatedButton.styleFrom(

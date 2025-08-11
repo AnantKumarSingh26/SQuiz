@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               GridView.count(
                 crossAxisCount: 2,
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.all(20),
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
                 shrinkWrap: true,
