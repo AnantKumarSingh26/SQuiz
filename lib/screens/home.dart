@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<bool> progress = [
-      true, false, true, true, false, false, true, // Week 1
-      false, true, false, true, true, false, false, // Week 2
-      true, true, false, false, true, true, true, // Week 3
-      false, false, true, false, true, false, true, // Week 4
-    ];
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
@@ -103,6 +98,64 @@ class _activityState extends State<activity> {
   final List <int> completedDays=[1,2,4,21,12,23,30,8,15];
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(12),
+        boxShadow:[
+          BoxShadow(color: Colors.black.withOpacity(0.4),blurRadius: 6)
+        ]
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              DropdownButton<int>(
+                value: selectedYear ,
+                items: [2023,2024,2025,2026]
+                .map((year)=>DropdownMenuItem(
+                  value: year,
+                  child: Text(year.toString())
+                  )).toList(), 
+                  onChanged: (value){
+                      setState(() {
+                        selectedYear=value!;
+                      }
+                    );
+                  }
+                ),
+                DropdownButton<int>(value:seletecMonth,
+                items: List.generate(12, (index)=>index + 1)
+                .map((month)=>DropdownMenuItem(
+                  value:month,
+                  child: Text(DateFormat.MMMM().format(DateTime(0,month))),
+                  )).toList(), onChanged:(value){
+                    setState(() {
+                      seletecMonth=value!;
+                    });
+                  } )
+            ],
+          ),
+            Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text("Su"),
+              Text("Mo"),
+              Text("Tu"),
+              Text("We"),
+              Text("Th"),
+              Text("Fr"),
+              Text("Sa"),
+            ],
+          ),
+
+          
+
+        ],
+      ),
+    );
   }
 }
