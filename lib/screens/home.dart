@@ -81,12 +81,14 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          
+          const activity(),
         ],
       ),
     );
   }
 }
+
+
 class activity extends StatefulWidget {
   const activity({super.key});
 
@@ -95,6 +97,10 @@ class activity extends StatefulWidget {
 }
 
 class _activityState extends State<activity> {
+  int selectedYear = DateTime.now().year;
+  int seletecMonth = DateTime.now().month;
+
+  final List <int> completedDays=[1,2,4,21,12,23,30,8,15];
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
