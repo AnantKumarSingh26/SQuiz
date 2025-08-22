@@ -5,6 +5,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<bool> progress = [
+      true, false, true, true, false, false, true, // Week 1
+      false, true, false, true, true, false, false, // Week 2
+      true, true, false, false, true, true, true, // Week 3
+      false, false, true, false, true, false, true, // Week 4
+    ];
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
@@ -22,7 +28,10 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
-                  BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6),
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 6,
+                  ),
                 ],
               ),
               //User Icon
@@ -39,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 16),
-          
+
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -48,25 +57,52 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Text(
                             "Anonymous",
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                          SizedBox(width: 6,),
-                          Icon(Icons.no_accounts)
+                          SizedBox(width: 6),
+                          Icon(Icons.no_accounts),
                         ],
                       ),
-                      SizedBox(height: 4,),
-          
+                      SizedBox(height: 4),
+
                       Row(
                         children: [
                           Text("Login to save your progress"),
                           SizedBox(width: 4),
                           Icon(Icons.poll_outlined),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ],
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount : progress.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+
+                crossAxisCount: 7,
+                mainAxisSpacing: 6,
+                crossAxisSpacing: 6,
+              ),
+              itemBuilder: (context,index){
+                bool taken =progress[index];
+                  return Container(
+                    decoration: BoxDecoration(
+                      color:taken?Colors.lightGreen:Colors.white,
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: Colors.black),
+                    ),
+                  );
+              },
             ),
           ),
         ],

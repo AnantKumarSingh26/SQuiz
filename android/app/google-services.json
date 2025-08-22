@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "683419714025",
-    "project_id": "squiz-3e2c9",
-    "storage_bucket": "squiz-3e2c9.firebasestorage.app"
+    "project_number": "229636234056",
+    "project_id": "squiz-75e59",
+    "storage_bucket": "squiz-75e59.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:683419714025:android:e51490fa9aef51ae944b78",
+        "mobilesdk_app_id": "1:229636234056:android:ead617c6f519aaccfc717d",
         "android_client_info": {
           "package_name": "com.example.quiz_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAh1Itr5JweCIhy0J5SK7WLfU6wSNBQ_-I"
+          "current_key": "AIzaSyCUNbW8az4vhbMcU5HzxLSUIczz_K1Oeww"
         }
       ],
       "services": {
