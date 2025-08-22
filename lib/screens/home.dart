@@ -1,70 +1,65 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  final List<Map<String, dynamic>> exams = [
-    {'title': 'SSC CHSL', 'route': '/chsl'},
-    {'title': 'SSC CGL', 'route': '/cgl'},
-    {'title': 'SSC MTS', 'route': '/mts'},
-    {'title': 'SSC Steno', 'route': '/steno'},
-    {'title': 'UPPET', 'route': '/uppet'},
-    {'title': 'TET', 'route': '/tet'},
-    {'title': 'CTET', 'route': '/ctet'},
-  ];
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text(
-          'Welcome to a New Journey',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            foreground:
-                Paint()
-                  ..shader = LinearGradient(
-                    colors: [
-                      const Color.fromARGB(255, 83, 90, 227),
-                      const Color.fromARGB(255, 220, 19, 255),
-                    ], // Your gradient colors
-                  ).createShader(Rect.fromLTWH(0100, 100, 200, 170)), //
-          ),
-          textAlign: TextAlign.center,
-        ),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
+        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.search_sharp)),
+        ],
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/image3.png'),
-            fit: BoxFit.cover,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6),
+            ],
           ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          //User Icon
+          child: Row(
             children: [
-              GridView.count(
-                crossAxisCount: 2,
-                padding: EdgeInsets.all(20),
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                children:
-                    exams.map((exam) {
-                      return ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, exam['route']);
-                        },
-                        child: Text(exam['title']),
-                      );
-                    }).toList(),
+              const CircleAvatar(
+                radius: 30,
+                backgroundColor: Colors.blue,
+                child: Icon(
+                  Icons.person,
+                  size: 30,
+                  color: Color.fromARGB(255, 255, 217, 78),
+                ),
+              ),
+              const SizedBox(width: 16),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Row(
+                    children: [
+                      Text(
+                        "Anonymous",
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(width: 6,),
+                      Icon(Icons.no_accounts)
+                    ],
+                  ),
+                  SizedBox(height: 4,),
+
+                  Row(
+                    children: [
+                      Text("Login to save your progress"),
+                      SizedBox(width: 4),
+                      Icon(Icons.poll_outlined),
+                    ],
+                  )
+                ],
               ),
             ],
           ),
