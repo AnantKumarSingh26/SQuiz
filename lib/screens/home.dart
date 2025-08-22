@@ -81,32 +81,22 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount : progress.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-
-                crossAxisCount: 7,
-                mainAxisSpacing: 6,
-                crossAxisSpacing: 6,
-              ),
-              itemBuilder: (context,index){
-                bool taken =progress[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      color:taken?Colors.lightGreen:Colors.white,
-                      borderRadius: BorderRadius.circular(6),
-                      border: Border.all(color: Colors.black),
-                    ),
-                  );
-              },
-            ),
-          ),
+          
         ],
       ),
     );
+  }
+}
+class activity extends StatefulWidget {
+  const activity({super.key});
+
+  @override
+  State<activity> createState() => _activityState();
+}
+
+class _activityState extends State<activity> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
