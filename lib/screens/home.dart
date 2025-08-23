@@ -8,8 +8,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search_sharp)),
@@ -23,76 +24,78 @@ class HomeScreen extends StatelessWidget {
               fit: BoxFit.cover
               )
           ),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 6,
-                      ),
-                    ],
-                  ),
-                  //User Icon
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Colors.blue,
-                        child: Icon(
-                          Icons.person,
-                          size: 30,
-                          color: Color.fromARGB(255, 255, 217, 78),
+          child: SafeArea(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 6,
                         ),
-                      ),
-                      const SizedBox(width: 16),
-          
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Anonymous",
-                                style: GoogleFonts.pressStart2p(
-                                    fontSize: 18,
+                      ],
+                    ),
+                    //User Icon
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Colors.blue,
+                          child: Icon(
+                            Icons.person,
+                            size: 30,
+                            color: Color.fromARGB(255, 255, 217, 78),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+            
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "Anonymous",
+                                  style: GoogleFonts.pressStart2p(
+                                      fontSize: 18,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(width: 6),
-                              Icon(Icons.no_accounts),
-                            ],
-                          ),
-                          SizedBox(height: 4),
-          
-                          Row(
-                            children: [
-                              Text("Login to save your progress",
-                              style: GoogleFonts.viga(
-                                fontSize: 13 
-                              ),),
-                              SizedBox(width: 4),
-                              Icon(Icons.poll_outlined),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
+                                SizedBox(width: 6),
+                                Icon(Icons.no_accounts),
+                              ],
+                            ),
+                            SizedBox(height: 4),
+            
+                            Row(
+                              children: [
+                                Text("Login to save your progress",
+                                style: GoogleFonts.viga(
+                                  fontSize: 13 
+                                ),),
+                                SizedBox(width: 4),
+                                Icon(Icons.poll_outlined),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-             
-              const SizedBox(height: 5),
-              const activity(),
-              
-            ],
+               
+                const SizedBox(height: 5),
+                const activity(),
+            
+              ],
+            ),
           ),
         ),
       ),
