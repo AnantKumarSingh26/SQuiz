@@ -17,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<int> completedDays = [1, 2, 4, 21, 12, 23, 30, 8, 15];
 
-
   Color getTabColor(int index) {
     switch (index) {
       case 0:
@@ -39,14 +38,16 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.transparent,
         leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
         actions: [
-          IconButton(
-              onPressed: () {}, icon: const Icon(Icons.search_sharp)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.search_sharp)),
         ],
       ),
       body: Container(
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/image3.png'), fit: BoxFit.cover)),
+          image: DecorationImage(
+            image: AssetImage('assets/image3.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: SafeArea(
           child: Column(
             children: [
@@ -86,9 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 "Anonymous",
-                                style: GoogleFonts.pressStart2p(
-                                  fontSize: 18,
-                                ),
+                                style: GoogleFonts.pressStart2p(fontSize: 18),
                               ),
                               SizedBox(width: 6),
                               Icon(Icons.no_accounts),
@@ -117,26 +116,32 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.all( 16),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 250, 250, 251).withOpacity(0.6), // Transparent background
-                          borderRadius: BorderRadius.circular(16.0),
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(
+                      255,
+                      250,
+                      250,
+                      251,
+                    ).withOpacity(0.6), // Transparent background
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Text(
+                    "Total Test Taken :\t 90 \nAverage Marks : \t65 \nHighest Mark : \t99",
+                    style: GoogleFonts.viga(
+                      color: const Color.fromARGB(255, 66, 64, 64),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.5,
+                      shadows: [
+                        Shadow(
+                          color: const Color.fromARGB(255, 254, 254, 254),
+                          blurRadius: 15,
+                        ),
+                      ],
                     ),
-                    child: Text ("Total Test Taken :\t 90 \nAverage Marks : \t65 \nHighest Mark : \t99",
-                      style: GoogleFonts.viga(
-                        color: const Color.fromARGB(255, 66, 64, 64),
-                        fontSize: 20  ,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.5, 
-                        shadows: [
-                          Shadow(
-                            color: const Color.fromARGB(255, 254, 254, 254),
-                            blurRadius: 15,
-                          )                        
-                        ]
-                     ),
-                    ),
+                  ),
                 ),
               ),
             ],
@@ -149,26 +154,57 @@ class _HomeScreenState extends State<HomeScreen> {
           topRight: Radius.circular(20),
         ),
         child: Container(
-          color: Colors.lightGreen.withAlpha(30),
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
-          child: GNav(
-            gap: 20,
-            backgroundColor: const Color.fromARGB(0, 138, 22, 22),
-            color: const Color.fromARGB(255, 0, 0, 0),
-            activeColor: Colors.white,
-            tabBackgroundColor: getTabColor(_selectedIndex),
-            padding: const EdgeInsets.all(16),
-            selectedIndex: _selectedIndex,
-            onTabChange: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
-            tabs: const [
-              GButton(icon: Icons.home, text: 'Home'),
-              GButton(icon: Icons.quiz_rounded, text: 'Test'),
-              GButton(icon: Icons.account_circle, text: 'Account'),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(0, 255, 255, 255).withValues(alpha: 0.7),
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.6),
+                blurRadius: 10,
+                offset: Offset(0, -2),
+              ),
             ],
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+            child: GNav(
+              gap: 10,
+              backgroundColor: const Color.fromARGB(0, 138, 22, 22),
+              color: const Color.fromARGB(255, 0, 0, 0),
+              activeColor: Colors.white,
+              tabBackgroundColor: getTabColor(_selectedIndex),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              selectedIndex: _selectedIndex,
+              onTabChange: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+              tabs: const [
+                GButton(
+                  icon: Icons.home,
+                  text: 'Home',
+                  iconColor: Color.fromARGB(255, 182, 143, 1),
+                  iconSize: 30,
+                ),
+                GButton(
+                  icon: Icons.quiz_rounded,
+                  text: 'Test',
+                  iconColor: Colors.blueAccent,
+                  iconSize: 30,
+                ),
+                GButton(
+                  icon: Icons.account_circle,
+                  text: 'Account',
+                  iconColor: Colors.redAccent,
+                  iconSize: 30,
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -196,40 +232,46 @@ class _activityState extends State<activity> {
     int firstWeekday = DateTime(selectedYear, selectedMonth, 1).weekday;
     int firstWeek = firstWeekday % 7;
     int totalCells = firstWeek + daysInMonth;
-    
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6),
-              ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Lumen',
-                  style: GoogleFonts.rubikDistressed(
-                    fontSize: 30,
-                    shadows: [
-                      Shadow(
-                        color: const Color.fromARGB(136, 64, 64, 64).withOpacity(0.5),
-                        blurRadius: 10,
-                      ),
-                    ],
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 6),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Lumen',
+              style: GoogleFonts.rubikDistressed(
+                fontSize: 30,
+                shadows: [
+                  Shadow(
+                    color: const Color.fromARGB(
+                      136,
+                      64,
+                      64,
+                      64,
+                    ).withOpacity(0.5),
+                    blurRadius: 10,
                   ),
-                ),
-                //dropdown Button for year and month
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    DropdownButton<int>(
-                      value: selectedYear,
-                      items: [2023, 2024, 2025, 2026]
+                ],
+              ),
+            ),
+            //dropdown Button for year and month
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                DropdownButton<int>(
+                  value: selectedYear,
+                  items:
+                      [2023, 2024, 2025, 2026]
                           .map(
                             (year) => DropdownMenuItem(
                               value: year,
@@ -237,15 +279,16 @@ class _activityState extends State<activity> {
                             ),
                           )
                           .toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          selectedYear = value!;
-                        });
-                      },
-                    ),
-                    DropdownButton<int>(
-                      value: selectedMonth,
-                      items: List.generate(12, (index) => index + 1)
+                  onChanged: (value) {
+                    setState(() {
+                      selectedYear = value!;
+                    });
+                  },
+                ),
+                DropdownButton<int>(
+                  value: selectedMonth,
+                  items:
+                      List.generate(12, (index) => index + 1)
                           .map(
                             (month) => DropdownMenuItem(
                               value: month,
@@ -255,70 +298,72 @@ class _activityState extends State<activity> {
                             ),
                           )
                           .toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          selectedMonth = value!;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    Text("Su", style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text("Mo", style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text("Tu", style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text("We", style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text("Th", style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text("Fr", style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text("Sa", style: TextStyle(fontWeight: FontWeight.bold)),
-                  ],
-                ),
-                SizedBox(height: 8),
-                //Days Grid
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 7,
-                    mainAxisSpacing: 8,
-                    crossAxisSpacing: 8,
-                  ),
-                  itemCount: totalCells,
-                  itemBuilder: (context, index) {
-                    if (index < firstWeek) {
-                      return const SizedBox.shrink();
-                    }
-                    int day = index - firstWeek + 1;
-                    bool done = completedDays.contains(day);
-
-                    return Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: done
-                            ? const Color.fromARGB(255, 9, 180, 37)
-                            : Colors.white,
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        day.toString(),
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: done
-                              ? Colors.white
-                              : const Color.fromARGB(255, 252, 2, 2),
-                        ),
-                      ),
-                    );
+                  onChanged: (value) {
+                    setState(() {
+                      selectedMonth = value!;
+                    });
                   },
                 ),
               ],
             ),
-          ),
-        );
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                Text("Su", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Mo", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Tu", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("We", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Th", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Fr", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Sa", style: TextStyle(fontWeight: FontWeight.bold)),
+              ],
+            ),
+            SizedBox(height: 8),
+            //Days Grid
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 7,
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+              ),
+              itemCount: totalCells,
+              itemBuilder: (context, index) {
+                if (index < firstWeek) {
+                  return const SizedBox.shrink();
+                }
+                int day = index - firstWeek + 1;
+                bool done = completedDays.contains(day);
+
+                return Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color:
+                        done
+                            ? const Color.fromARGB(255, 9, 180, 37)
+                            : Colors.white,
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    day.toString(),
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color:
+                          done
+                              ? Colors.white
+                              : const Color.fromARGB(255, 252, 2, 2),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
