@@ -17,20 +17,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<int> completedDays = [1, 2, 4, 21, 12, 23, 30, 8, 15];
 
-  final List<Widget> _pages = [
-    const Center(child: Text("🏠 Home Page")),
-    const Center(child: Text("📝 Test Page")),
-    const Center(child: Text("👤 Account Page")),
-  ];
 
   Color getTabColor(int index) {
     switch (index) {
       case 0:
-        return Colors.green;
+        return Colors.green.withValues(alpha: 0.6);
       case 1:
-        return Colors.red;
+        return Colors.red.withValues(alpha: 0.6);
       case 2:
-        return Colors.blue;
+        return Colors.blue.withValues(alpha: 0.6);
       default:
         return Colors.lightGreen;
     }
@@ -125,10 +120,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.all( 16),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 250, 250, 251).withOpacity(0.7), // Transparent background
+                      color: const Color.fromARGB(255, 250, 250, 251).withOpacity(0.6), // Transparent background
                           borderRadius: BorderRadius.circular(16.0),
                     ),
-                    child: Text ("Total Test Taken :\t 90 \n Average Marks : \t65 \n Highest Mark : \t99",
+                    child: Text ("Total Test Taken :\t 90 \nAverage Marks : \t65 \nHighest Mark : \t99",
                       style: GoogleFonts.viga(
                         color: const Color.fromARGB(255, 66, 64, 64),
                         fontSize: 20  ,
@@ -148,27 +143,33 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        color: Colors.lightGreen.withAlpha(30),
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: GNav(
-          gap: 20,
-          backgroundColor: Colors.transparent,
-          color: Colors.black,
-          activeColor: Colors.white,
-          tabBackgroundColor: getTabColor(_selectedIndex),
-          padding: const EdgeInsets.all(16),
-          selectedIndex: _selectedIndex,
-          onTabChange: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-          tabs: const [
-            GButton(icon: Icons.home, text: 'Home'),
-            GButton(icon: Icons.quiz_rounded, text: 'Test'),
-            GButton(icon: Icons.account_circle, text: 'Account'),
-          ],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+        child: Container(
+          color: Colors.lightGreen.withAlpha(30),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
+          child: GNav(
+            gap: 20,
+            backgroundColor: const Color.fromARGB(0, 138, 22, 22),
+            color: const Color.fromARGB(255, 0, 0, 0),
+            activeColor: Colors.white,
+            tabBackgroundColor: getTabColor(_selectedIndex),
+            padding: const EdgeInsets.all(16),
+            selectedIndex: _selectedIndex,
+            onTabChange: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            tabs: const [
+              GButton(icon: Icons.home, text: 'Home'),
+              GButton(icon: Icons.quiz_rounded, text: 'Test'),
+              GButton(icon: Icons.account_circle, text: 'Account'),
+            ],
+          ),
         ),
       ),
     );
