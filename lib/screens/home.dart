@@ -1,9 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+  int selectedYear = DateTime.now().year;
+  int selectedMonth = DateTime.now().month;
+
+  final List<int> completedDays = [1, 2, 4, 21, 12, 23, 30, 8, 15];
+
+  final List<Widget> _pages = [
+    const Center(child: Text("🏠 Home Page")),
+    const Center(child: Text("📝 Test Page")),
+    const Center(child: Text("👤 Account Page")),
+  ];
+
+  Color getTabColor(int index) {
+    switch (index) {
+      case 0:
+        return Colors.green;
+      case 1:
+        return Colors.red;
+      case 2:
+        return Colors.blue;
+      default:
+        return Colors.lightGreen;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +119,56 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 5),
               const activity(),
               SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.all( 16),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 250, 250, 251).withOpacity(0.7), // Transparent background
+                          borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: Text ("Total Test Taken :\t 90 \n Average Marks : \t65 \n Highest Mark : \t99",
+                      style: GoogleFonts.viga(
+                        color: const Color.fromARGB(255, 66, 64, 64),
+                        fontSize: 20  ,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5, 
+                        shadows: [
+                          Shadow(
+                            color: const Color.fromARGB(255, 254, 254, 254),
+                            blurRadius: 15,
+                          )                        
+                        ]
+                     ),
+                    ),
+                ),
+              ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.lightGreen.withAlpha(30),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        child: GNav(
+          gap: 20,
+          backgroundColor: Colors.transparent,
+          color: Colors.black,
+          activeColor: Colors.white,
+          tabBackgroundColor: getTabColor(_selectedIndex),
+          padding: const EdgeInsets.all(16),
+          selectedIndex: _selectedIndex,
+          onTabChange: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          tabs: const [
+            GButton(icon: Icons.home, text: 'Home'),
+            GButton(icon: Icons.quiz_rounded, text: 'Test'),
+            GButton(icon: Icons.account_circle, text: 'Account'),
+          ],
         ),
       ),
     );
