@@ -10,12 +10,7 @@ class TestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('🧠 Swipe to Choose a Test'),
-        backgroundColor: Colors.teal,
-      ),
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0),
         child: SizedBox(
           height: 220, // Height of the card container
@@ -83,7 +78,6 @@ class TestScreen extends StatelessWidget {
             },
           ),
         ),
-      ),
     );
   }
 }
