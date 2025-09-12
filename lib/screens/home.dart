@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'test_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -41,113 +42,117 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.search_sharp)),
         ],
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/image3.png'),
-            fit: BoxFit.cover,
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/image3.png'),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 6,
-                      ),
-                    ],
-                  ),
-                  //User Icon
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Colors.blue,
-                        child: Icon(
-                          Icons.person,
-                          size: 30,
-                          color: Color.fromARGB(255, 255, 217, 78),
+          child: SafeArea(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 6,
                         ),
-                      ),
-                      const SizedBox(width: 16),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Anonymous",
-                                style: GoogleFonts.pressStart2p(fontSize: 18),
-                              ),
-                              SizedBox(width: 6),
-                              Icon(Icons.no_accounts),
-                            ],
+                      ],
+                    ),
+                    //User Icon
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Colors.blue,
+                          child: Icon(
+                            Icons.person,
+                            size: 30,
+                            color: Color.fromARGB(255, 255, 217, 78),
                           ),
-                          SizedBox(height: 4),
-                          Row(
-                            children: [
-                              Text(
-                                "Login to save your progress",
-                                style: GoogleFonts.viga(fontSize: 13),
-                              ),
-                              SizedBox(width: 4),
-                              Icon(Icons.poll_outlined),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 5),
-              const activity(),
-              SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(
-                      255,
-                      250,
-                      250,
-                      251,
-                    ).withOpacity(0.6), // Transparent background
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Text(
-                    "Total Test Taken :\t 90 \nAverage Marks : \t65 \nHighest Mark : \t99",
-                    style: GoogleFonts.viga(
-                      color: const Color.fromARGB(255, 66, 64, 64),
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.5,
-                      shadows: [
-                        Shadow(
-                          color: const Color.fromARGB(255, 254, 254, 254),
-                          blurRadius: 15,
+                        ),
+                        const SizedBox(width: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "Anonymous",
+                                  style: GoogleFonts.pressStart2p(fontSize: 18),
+                                ),
+                                SizedBox(width: 6),
+                                Icon(Icons.no_accounts),
+                              ],
+                            ),
+                            SizedBox(height: 4),
+                            Row(
+                              children: [
+                                Text(
+                                  "Login to save your progress",
+                                  style: GoogleFonts.viga(fontSize: 13),
+                                ),
+                                SizedBox(width: 4),
+                                Icon(Icons.poll_outlined),
+                              ],
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 5),
+                const activity(),
+                SizedBox(height: 16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(
+                        255,
+                        250,
+                        250,
+                        251,
+                      ).withOpacity(0.6), // Transparent background
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: Text(
+                      "Total Test Taken :\t 90 \nAverage Marks : \t65 \nHighest Mark : \t99",
+                      style: GoogleFonts.viga(
+                        color: const Color.fromARGB(255, 66, 64, 64),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.5,
+                        shadows: [
+                          Shadow(
+                            color: const Color.fromARGB(255, 254, 254, 254),
+                            blurRadius: 15,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                TestScreen(),
+              ],
+            ),
           ),
         ),
       ),
+// ++++++++-----------  BOTTOM NAVIGATION BAR  -----------+++++++++++
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
@@ -186,15 +191,15 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               tabs: const [
                 GButton(
-                  icon: Icons.home,
-                  text: 'Home',
-                  iconColor: Color.fromARGB(255, 182, 143, 1),
-                  iconSize: 30,
-                ),
-                GButton(
                   icon: Icons.quiz_rounded,
                   text: 'Test',
                   iconColor: Colors.blueAccent,
+                  iconSize: 30,
+                ),
+                GButton(
+                  icon: Icons.home,
+                  text: 'Home',
+                  iconColor: Color.fromARGB(255, 255, 200, 0),
                   iconSize: 30,
                 ),
                 GButton(
