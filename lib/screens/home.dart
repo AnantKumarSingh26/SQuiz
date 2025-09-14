@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'test_screen.dart';
+// import 'test_screen.dart';
+import 'package:squiz/widgets/graph.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -43,115 +45,116 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/image3.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: SafeArea(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 6,
-                        ),
-                      ],
-                    ),
-                    //User Icon
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.blue,
-                          child: Icon(
-                            Icons.person,
-                            size: 30,
-                            color: Color.fromARGB(255, 255, 217, 78),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Anonymous",
-                                  style: GoogleFonts.pressStart2p(fontSize: 18),
-                                ),
-                                SizedBox(width: 6),
-                                Icon(Icons.no_accounts),
-                              ],
-                            ),
-                            SizedBox(height: 4),
-                            Row(
-                              children: [
-                                Text(
-                                  "Login to save your progress",
-                                  style: GoogleFonts.viga(fontSize: 13),
-                                ),
-                                SizedBox(width: 4),
-                                Icon(Icons.poll_outlined),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+        child: SafeArea(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 6,
+                      ),
+                    ],
                   ),
-                ),
-                const SizedBox(height: 5),
-                const activity(),
-                SizedBox(height: 16),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                        255,
-                        250,
-                        250,
-                        251,
-                      ).withOpacity(0.6), // Transparent background
-                      borderRadius: BorderRadius.circular(16.0),
-                    ),
-                    child: Text(
-                      "Total Test Taken :\t 90 \nAverage Marks : \t65 \nHighest Mark : \t99",
-                      style: GoogleFonts.viga(
-                        color: const Color.fromARGB(255, 66, 64, 64),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.5,
-                        shadows: [
-                          Shadow(
-                            color: const Color.fromARGB(255, 254, 254, 254),
-                            blurRadius: 15,
+                  //User Icon
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.blue,
+                        child: Icon(
+                          Icons.person,
+                          size: 30,
+                          color: Color.fromARGB(255, 255, 217, 78),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "Anonymous",
+                                style: GoogleFonts.pressStart2p(fontSize: 18),
+                              ),
+                              SizedBox(width: 6),
+                              Icon(Icons.no_accounts),
+                            ],
+                          ),
+                          SizedBox(height: 4),
+                          Row(
+                            children: [
+                              Text(
+                                "Login to save your progress",
+                                style: GoogleFonts.viga(fontSize: 13),
+                              ),
+                              SizedBox(width: 4),
+                              Icon(Icons.poll_outlined),
+                            ],
                           ),
                         ],
                       ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 5),
+              const activity(),
+              SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(
+                      255,
+                      250,
+                      250,
+                      251,
+                    ).withOpacity(0.6), // Transparent background
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  child: Text(
+                    "Total Test Taken :\t 90 \nAverage Marks : \t65 \nHighest Mark : \t99",
+                    style: GoogleFonts.viga(
+                      color: const Color.fromARGB(255, 66, 64, 64),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.5,
+                      shadows: [
+                        Shadow(
+                          color: const Color.fromARGB(255, 254, 254, 254),
+                          blurRadius: 15,
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+              // StyledMarksGraph(
+              //   dataPoints: [
+              //     FlSpot(1, 72),
+              //     FlSpot(2, 85),
+              //     FlSpot(3, 78),
+              //     FlSpot(4, 90),
+              //     FlSpot(5, 88),
+              //   ],
+              // ),
+            ],
           ),
         ),
       ),
-// ++++++++-----------  BOTTOM NAVIGATION BAR  -----------+++++++++++
+      // ++++++++-----------  BOTTOM NAVIGATION BAR  -----------+++++++++++
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
@@ -159,7 +162,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Container(
           decoration: BoxDecoration(
-            color: const Color.fromARGB(0, 255, 255, 255).withValues(alpha: 0.7),
+            color: const Color.fromARGB(
+              0,
+              255,
+              255,
+              255,
+            ).withValues(alpha: 0.7),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(25),
               topRight: Radius.circular(25),
@@ -274,15 +282,14 @@ class _activityState extends State<activity> {
               children: [
                 DropdownButton<int>(
                   value: selectedYear,
-                  items:
-                      [2023, 2024, 2025, 2026]
-                          .map(
-                            (year) => DropdownMenuItem(
-                              value: year,
-                              child: Text(year.toString()),
-                            ),
-                          )
-                          .toList(),
+                  items: [2023, 2024, 2025, 2026]
+                      .map(
+                        (year) => DropdownMenuItem(
+                          value: year,
+                          child: Text(year.toString()),
+                        ),
+                      )
+                      .toList(),
                   onChanged: (value) {
                     setState(() {
                       selectedYear = value!;
@@ -291,17 +298,16 @@ class _activityState extends State<activity> {
                 ),
                 DropdownButton<int>(
                   value: selectedMonth,
-                  items:
-                      List.generate(12, (index) => index + 1)
-                          .map(
-                            (month) => DropdownMenuItem(
-                              value: month,
-                              child: Text(
-                                DateFormat.MMMM().format(DateTime(0, month)),
-                              ),
-                            ),
-                          )
-                          .toList(),
+                  items: List.generate(12, (index) => index + 1)
+                      .map(
+                        (month) => DropdownMenuItem(
+                          value: month,
+                          child: Text(
+                            DateFormat.MMMM().format(DateTime(0, month)),
+                          ),
+                        ),
+                      )
+                      .toList(),
                   onChanged: (value) {
                     setState(() {
                       selectedMonth = value!;
@@ -344,10 +350,9 @@ class _activityState extends State<activity> {
                 return Container(
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color:
-                        done
-                            ? const Color.fromARGB(255, 9, 180, 37)
-                            : Colors.white,
+                    color: done
+                        ? const Color.fromARGB(255, 9, 180, 37)
+                        : Colors.white,
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -356,10 +361,9 @@ class _activityState extends State<activity> {
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
-                      color:
-                          done
-                              ? Colors.white
-                              : const Color.fromARGB(255, 252, 2, 2),
+                      color: done
+                          ? Colors.white
+                          : const Color.fromARGB(255, 252, 2, 2),
                     ),
                   ),
                 );
