@@ -19,6 +19,14 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedMonth = DateTime.now().month;
 
   final List<int> completedDays = [1, 2, 4, 21, 12, 23, 30, 8, 15];
+  final List<ScorePoint> quizScores = [
+    ScorePoint(label: 'Quiz 1', score: 85),
+    ScorePoint(label: 'Quiz 2', score: 72),
+    ScorePoint(label: 'Quiz 3', score: 90),
+    ScorePoint(label: 'Quiz 7', score: 58),
+    ScorePoint(label: 'Quiz 6', score: 68),
+    ScorePoint(label: 'Quiz 5', score: 89),
+  ];
 
   Color getTabColor(int index) {
     switch (index) {
@@ -108,20 +116,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(height: 5),
-              const activity(),
+              const activity(), //Lumen activity whole thing
               SizedBox(height: 16),
+              QuizScoresLineChart(
+                points: quizScores,
+                minY: 0,
+                maxY: 100,
+                lineColor: Colors.deepPurple,
+                fillColor: Colors.deepPurple.withOpacity(0.3),
+                showDots: true,
+                showArea: true,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+              ),
+
+              SizedBox(height: 16),
+              // ++++---- Total test taken / Average Marks / Highest marks ----++++
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: const Color.fromARGB(
-                      255,
-                      250,
-                      250,
-                      251,
-                    ).withOpacity(0.6), // Transparent background
+                    color: const Color.fromARGB(178, 235, 175, 255).withOpacity(
+                      0.6,
+                    ), // Transparent background of the container
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                   child: Text(
@@ -163,10 +184,10 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           decoration: BoxDecoration(
             color: const Color.fromARGB(
-              0,
               255,
-              255,
-              255,
+              162,
+              204,
+              241,
             ).withValues(alpha: 0.7),
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(25),
@@ -174,7 +195,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.6),
+                color: const Color.fromARGB(
+                  255,
+                  255,
+                  255,
+                  255,
+                ).withValues(alpha: 0.6),
                 blurRadius: 10,
                 offset: Offset(0, -2),
               ),
@@ -206,7 +232,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 GButton(
                   icon: Icons.home,
                   text: 'Home',
-                  iconColor: Color.fromARGB(255, 255, 200, 0),
+                  iconColor: Color.fromARGB(255, 121, 95, 0),
                   iconSize: 30,
                 ),
                 GButton(
