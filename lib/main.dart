@@ -28,48 +28,49 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50),
-        child: Column(
-          children: [
-            const Spacer(flex: 2),
-            Image.asset('assets/logo.png', fit: BoxFit.cover),
-            const SizedBox(height: 20),
-             Text(
-              'Welcome to S-Quiz, \n Challenge your mind, expand your knowledge',
-              style: GoogleFonts.lobster(fontSize: 34,fontWeight: FontWeight.w500,),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 30),
-            const Spacer(flex: 3),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 50),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Navigate to the home screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 50),
+          child: Column(
+            children: [
+              const SizedBox(height: 30,),
+              Image.asset('assets/logo.png', fit: BoxFit.cover),
+              const SizedBox(height: 60),
+               Text(
+                'Welcome to S-Quiz, \n Challenge your mind, expand your knowledge',
+                style: GoogleFonts.lobster(fontSize: 34,fontWeight: FontWeight.w500,),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 230),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 50),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Navigate to the home screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 10),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                  ),
-                  child: const Text(
-                    'Get Started',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    child: const Text(
+                      'Get Started',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
