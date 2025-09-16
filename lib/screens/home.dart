@@ -23,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
     ScorePoint(label: 'Quiz 1', score: 85),
     ScorePoint(label: 'Quiz 2', score: 72),
     ScorePoint(label: 'Quiz 3', score: 90),
-    ScorePoint(label: 'Quiz 7', score: 58),
     ScorePoint(label: 'Quiz 6', score: 68),
     ScorePoint(label: 'Quiz 5', score: 89),
   ];
